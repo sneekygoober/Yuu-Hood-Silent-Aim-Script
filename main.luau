@@ -93,7 +93,8 @@ local old; old = clonefunction(hookfunction(rawget(GunHandler, "Shoot"), newcclo
         if c then
             _args["AimPosition"] = c.Position;
             _args["Hit"] = c;
-            return old(_args);
+            task.spawn(old, _args);
+            return c.Position, c, Vector3.new(0, 1, 0);
         end;
     end;
 
